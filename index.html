@@ -1,0 +1,1061 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Justin | creative media producer, UI/graphic designer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="manifest" href="site.webmanifest">
+    <meta name="description" content="Justin Acharya is a Creative Media Producer, UI/Graphic Designer, and aspiring cybersecurity professional based in Kathmandu, Nepal.">
+    <meta name="author" content="Justin Acharya">
+    <link rel="canonical" href="https://justin.com.np/">
+
+    <meta property="og:title" content="Justin Acharya — Designer & Developer">
+    <meta property="og:description" content="Portfolio of Justin Acharya — Creative Media Producer, UI/Graphic Designer, and aspiring cybersecurity professional.">
+    <meta property="og:url" content="https://justin.com.np/">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://justin.com.np/Profile.PNG">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Justin Acharya — Designer & Developer">
+    <meta name="twitter:description" content="Portfolio of Justin Acharya — Designer, Developer, and Creative Media Producer.">
+    <meta name="twitter:image" content="https://justin.com.np/Profile.PNG">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brutYellow: '#FFD600',
+                        brutBlack: '#000000',
+                        brutWhite: '#FFFFFF',
+                    },
+                    fontFamily: {
+                        display: ['"Space Grotesk"', 'sans-serif'],
+                        sans: ['"Inter"', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #FFFFFF;
+            color: #000000;
+            overflow-x: hidden;
+        }
+        h1, h2, h3, h4, h5, h6, .font-display {
+            font-family: 'Space Grotesk', sans-serif;
+        }
+        /* Custom Brutalist Cursor */
+        .brut-cursor {
+            pointer-events: none;
+            position: fixed;
+            width: 16px;
+            height: 16px;
+            background-color: #FFD600;
+            border: 2px solid #000000;
+            z-index: 99999;
+            transform: translate(-50%, -50%);
+            display: none;
+            transition: width 0.1s ease, height 0.1s ease, background-color 0.1s ease;
+        }
+        .brut-cursor.expand {
+            width: 36px;
+            height: 36px;
+            background-color: #FFFFFF;
+        }
+        @media (min-width: 1024px) {
+            .brut-cursor {
+                display: block;
+            }
+            body, a, button, input, textarea, .interactive, .carousel-card, #gallery-grid > div {
+                cursor: none !important;
+            }
+        }
+        /* Hard Brutalist Borders and Shadows */
+        .brut-border {
+            border: 2px solid #000000;
+        }
+        .brut-shadow {
+            box-shadow: 4px 4px 0px #000000;
+        }
+        .brut-shadow-lg {
+            box-shadow: 8px 8px 0px #000000;
+        }
+        .brut-shadow-hover:hover {
+            box-shadow: 6px 6px 0px #000000;
+            transform: translate(-2px, -2px);
+        }
+        /* Hide scrollbars for clean horizontal carousel */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        /* Scroll-triggered downward reveal for content cards */
+        .reveal-down {
+            opacity: 0;
+            transform: translateY(-28px);
+            transition: opacity 650ms ease, transform 650ms cubic-bezier(.2,.7,.2,1);
+            will-change: opacity, transform;
+        }
+        .reveal-down.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .reveal-down {
+                opacity: 1;
+                transform: none;
+                transition: none;
+            }
+        }
+        #carousel-track {
+            overflow-x: auto;
+            overscroll-behavior-x: contain;
+            scroll-behavior: auto;
+        }
+
+        /* Right-click hint popup */
+        #rightClickHint {
+            position: fixed;
+            z-index: 999999;
+            pointer-events: none;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.2s ease, visibility 0.2s ease;
+            background-color: #FFFFFF;
+            color: #000000;
+            border: 2px solid #000000;
+            box-shadow: 3px 3px 0px #000000;
+            padding: 6px 12px;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            white-space: nowrap;
+        }
+
+        #rightClickHint.show {
+            opacity: 1;
+            visibility: visible;
+        }
+    </style>
+</head>
+<body class="bg-brutWhite text-brutBlack selection:bg-brutYellow selection:text-brutBlack">
+
+    <!-- Custom Cursor -->
+    <div id="custom-cursor" class="brut-cursor"></div>
+
+    <header class="sticky top-0 z-50 bg-brutWhite brut-border border-l-0 border-r-0 border-t-0">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-end">
+            
+            <!-- Desktop Nav Links -->
+            <nav class="hidden md:flex items-center space-x-8 font-medium text-sm">
+                <a href="#home" onclick="switchView('home');" class="hover:bg-brutYellow px-2 py-1 transition-colors uppercase tracking-wider">Home</a>
+                <a href="#about" onclick="switchView('home');" class="hover:bg-brutYellow px-2 py-1 transition-colors uppercase tracking-wider">About</a>
+                <a href="#experience" onclick="switchView('home');" class="hover:bg-brutYellow px-2 py-1 transition-colors uppercase tracking-wider">Experience</a>
+                <a href="#" onclick="switchView('designs'); return false;" class="hover:bg-brutYellow px-2 py-1 transition-colors uppercase tracking-wider">Designs</a>
+                <a href="#skills" onclick="switchView('home');" class="hover:bg-brutYellow px-2 py-1 transition-colors uppercase tracking-wider">Skills</a>
+                <a href="#contact" onclick="switchView('home');" class="hover:bg-brutYellow px-2 py-1 transition-colors uppercase tracking-wider">Contact</a>
+            </nav>
+
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-btn" class="md:hidden brut-border p-2 bg-brutYellow brut-shadow active:translate-y-1">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="square" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+            </button>
+        </div>
+
+        <!-- Mobile Dropdown Menu -->
+        <div id="mobile-menu" class="hidden md:hidden brut-border border-t-2 bg-brutWhite px-6 py-4 space-y-3 font-medium text-sm">
+            <a href="#home" onclick="switchView('home'); closeMobileMenu();" class="block py-2 hover:bg-brutYellow px-2 uppercase">Home</a>
+            <a href="#about" onclick="switchView('home'); closeMobileMenu();" class="block py-2 hover:bg-brutYellow px-2 uppercase">About</a>
+            <a href="#experience" onclick="switchView('home'); closeMobileMenu();" class="block py-2 hover:bg-brutYellow px-2 uppercase">Experience</a>
+            <a href="#" onclick="switchView('designs'); closeMobileMenu(); return false;" class="block py-2 hover:bg-brutYellow px-2 uppercase">Designs</a>
+            <a href="#skills" onclick="switchView('home'); closeMobileMenu();" class="block py-2 hover:bg-brutYellow px-2 uppercase">Skills</a>
+            <a href="#contact" onclick="switchView('home'); closeMobileMenu();" class="block py-2 hover:bg-brutYellow px-2 uppercase">Contact</a>
+        </div>
+    </header>
+
+    <main id="app-container">
+
+        <!-- ==================== LANDING PAGE VIEW ==================== -->
+        <div id="home-view" class="view-section">
+            
+            <section id="home" class="max-w-7xl mx-auto px-6 py-20 lg:py-32 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                <div class="lg:col-span-8 space-y-8">
+                    <div class="inline-block bg-brutYellow brut-border px-4 py-1.5 font-mono text-xs uppercase tracking-widest font-bold brut-shadow">
+                        Based in Lalitpur, Nepal
+                    </div>
+                    <h1 class="font-display font-bold text-5xl sm:text-7xl lg:text-8xl tracking-tight leading-none">
+                        DESIGNING IDEAS.<br>LEARNING SYSTEMS.
+                    </h1>
+                    <p class="text-lg sm:text-xl font-normal max-w-2xl leading-relaxed">
+                        I'm Justin, a 17 y/old creative media producer, designer, and cybersecurity student from Nepal. I work across visual communication, digital experiences, and technology.
+                    </p>
+                    <div class="flex flex-wrap gap-4 pt-4">
+                        <a href="#" onclick="switchView('designs');" class="bg-brutYellow brut-border brut-shadow brut-shadow-hover px-8 py-4 font-bold text-sm uppercase tracking-wider flex items-center space-x-2 transition-all">
+                            <span>Explore My Work</span>
+                            <span class="text-lg">→</span>
+                        </a>
+                        <a href="#contact" class="bg-brutWhite brut-border brut-shadow brut-shadow-hover px-8 py-4 font-bold text-sm uppercase tracking-wider flex items-center space-x-2 transition-all">
+                            <span>Get In Touch</span>
+                            <span class="text-lg">→</span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-4">
+                    <div class="brut-border brut-shadow-lg bg-brutYellow p-6 space-y-6 rotate-1">
+                        <div class="border-b-2 border-black pb-4 flex justify-between items-center">
+                            <span class="font-mono text-xs uppercase font-bold">ID Card // 2026</span>
+                            <span class="w-3 h-3 bg-black rounded-full"></span>
+                        </div>
+                        <div class="aspect-square bg-brutWhite brut-border flex flex-col items-center justify-center p-6 text-center">
+                            <img src="Profile.PNG" alt="Justin Acharya">
+                        </div>
+                        <p class="text-xs font-mono uppercase tracking-wide leading-relaxed">
+                            Multidisciplinary creative bridging visual design, and cybersecurity frameworks.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="about" class="brut-border border-l-0 border-r-0 bg-brutYellow py-24">
+                <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+                    <div class="lg:col-span-5 min-w-0 relative z-10">
+                        <span class="font-mono text-xs uppercase tracking-widest font-bold bg-white brut-border px-3 py-1">01 // About Me</span>
+                        <h2 class="font-display font-bold text-4xl sm:text-5xl mt-4 uppercase leading-tight">
+                            MULTIDISCIPLINARY CREATIVE IN TECH & DESIGN.
+                        </h2>
+                    </div>
+                    <div class="lg:col-span-7 min-w-0 space-y-6 text-lg font-normal leading-relaxed">
+                        <p class="bg-white brut-border p-6 brut-shadow">
+                            I operate at the intersection of visual communication and technology. Whether crafting high-impact graphic design systems or producing creative media, my focus remains rooted in clarity, purpose, and structural integrity.
+                        </p>
+                        <p class="bg-white brut-border p-6 brut-shadow">
+                            Based in Lalitpur, Nepal, I am actively expanding my technical foundations through computer science and cybersecurity studies, blending aesthetic rigor with analytical problem-solving.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="experience" class="max-w-7xl mx-auto px-6 py-24">
+                <div class="mb-16">
+                    <span class="font-mono text-xs uppercase tracking-widest font-bold bg-brutYellow brut-border px-3 py-1">02 // Professional Background</span>
+                    <h2 class="font-display font-bold text-4xl sm:text-6xl mt-4 uppercase">EXPERIENCE & ROLES</h2>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <!-- Dimagi Kura Card -->
+                    <div class="reveal-down brut-border brut-shadow-lg p-8 bg-white flex flex-col justify-between space-y-6">
+                        <div>
+                            <div class="flex justify-between items-start mb-4">
+                                <span class="font-mono text-xs font-bold uppercase bg-brutYellow brut-border px-2.5 py-1">Dimagi Kura</span>
+                                <span class="font-mono text-xs font-bold">Leadership</span>
+                            </div>
+                            <h3 class="font-display font-bold text-2xl uppercase mb-1">Vice President / CTO</h3>
+                            <p class="text-sm font-mono text-gray-700 mb-6">Creative Direction & Systems</p>
+                            <p class="text-base leading-relaxed mb-6">
+                                Leading creative direction, visual design, digital presence, and website-related work. Directing internal systems, cross-functional team coordination, and foundational organizational support.
+                            </p>
+                        </div>
+                        <div class="border-t-2 border-black pt-4 flex flex-wrap gap-2">
+                            <span class="text-xs font-mono bg-gray-100 brut-border px-2 py-1">Visual Design</span>
+                            <span class="text-xs font-mono bg-gray-100 brut-border px-2 py-1">Digital Presence</span>
+                            <span class="text-xs font-mono bg-gray-100 brut-border px-2 py-1">Team Coordination</span>
+                        </div>
+                    </div>
+
+                    <!-- Whitehouse IT & Robotics Club Card -->
+                    <div class="reveal-down brut-border brut-shadow-lg p-8 bg-white flex flex-col justify-between space-y-6">
+                        <div>
+                            <div class="flex justify-between items-start mb-4">
+                                <span class="font-mono text-xs font-bold uppercase bg-brutYellow brut-border px-2.5 py-1">Whitehouse IT & Robotics Club</span>
+                                <span class="font-mono text-xs font-bold">Organization</span>
+                            </div>
+                            <h3 class="font-display font-bold text-2xl uppercase mb-1">General Secretary</h3>
+                            <p class="text-sm font-mono text-gray-700 mb-6">Club Involvement & Leadership</p>
+                            <p class="text-base leading-relaxed mb-6">
+                                Spearheaded organizational involvement, communication initiatives, technical workshops, and club activities, fostering a collaborative ecosystem for technology and robotics enthusiasts.
+                            </p>
+                        </div>
+                        <div class="border-t-2 border-black pt-4 flex flex-wrap gap-2">
+                            <span class="text-xs font-mono bg-gray-100 brut-border px-2 py-1">Communication</span>
+                            <span class="text-xs font-mono bg-gray-100 brut-border px-2 py-1">Tech Activities</span>
+                            <span class="text-xs font-mono bg-gray-100 brut-border px-2 py-1">Leadership</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="brut-border border-l-0 border-r-0 bg-brutYellow py-20">
+                <div class="max-w-7xl mx-auto px-6">
+                    <span class="font-mono text-xs uppercase tracking-widest font-bold bg-white brut-border px-3 py-1">03 // Academic Foundation</span>
+                    <h2 class="font-display font-bold text-4xl sm:text-5xl mt-4 uppercase mb-12">EDUCATION & STUDIES</h2>
+
+                    <div class="reveal-down bg-white brut-border brut-shadow-lg p-8 sm:p-12 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                        <div class="lg:col-span-8 space-y-4">
+                            <span class="font-mono text-xs font-bold uppercase bg-brutYellow brut-border px-3 py-1">Current Education</span>
+                            <h3 class="font-display font-bold text-3xl uppercase">Himalayan WhiteHouse International College</h3>
+                            <p class="font-mono text-sm">Tinkune, Kathmandu, Nepal</p>
+                            <p class="text-lg font-medium">Grade 12 — Science with Computer Science</p>
+                            <p class="text-base leading-relaxed text-gray-800">
+                                Relevant subjects: Physics, Chemistry, Mathematics, Computer Science, English, and Nepali. Building a strong analytical foundation with a future interest in ethical hacking and cybersecurity.
+                            </p>
+                        </div>
+                        <div class="lg:col-span-4 brut-border p-6 bg-brutYellow text-center space-y-3">
+                            <span class="font-display font-bold text-xl uppercase block">Cybersecurity Focus</span>
+                            <p class="text-xs font-mono leading-relaxed">
+                                Actively studying ethical hacking fundamentals, system security research, and defensive architecture.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="skills" class="brut-border border-l-0 border-r-0 bg-white py-24">
+                <div class="max-w-7xl mx-auto px-6">
+                    <span class="font-mono text-xs uppercase tracking-widest font-bold bg-brutYellow brut-border px-3 py-1">04 // Capabilities</span>
+                    <h2 class="font-display font-bold text-4xl sm:text-6xl mt-4 uppercase mb-16">SKILLS & EXPERTISE</h2>
+
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                        <div class="reveal-down bg-brutYellow brut-border brut-shadow-lg p-8 space-y-6">
+                            <div class="border-b-2 border-black pb-4">
+                                <h3 class="font-display font-bold text-2xl uppercase">Design</h3>
+                                <p class="font-mono text-xs mt-1">Visual Communication & UI</p>
+                            </div>
+                            <ul class="space-y-3 font-medium">
+                                <li class="brut-border p-3 bg-gray-50 flex justify-between items-center">
+                                    <span>Graphic Design</span>
+                                    <span class="font-mono text-xs">Primary</span>
+                                </li>
+                                <li class="brut-border p-3 bg-gray-50 flex justify-between items-center">
+                                    <span>Social Media Design</span>
+                                    <span class="font-mono text-xs">Active</span>
+                                </li>
+                                <li class="brut-border p-3 bg-gray-50 flex justify-between items-center">
+                                    <span>Visual Communication</span>
+                                    <span class="font-mono text-xs">Core</span>
+                                </li>
+                                <li class="brut-border p-3 bg-gray-50 flex justify-between items-center">
+                                    <span>Canva & Figma</span>
+                                    <span class="font-mono text-xs">Proficient</span>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="reveal-down bg-brutYellow brut-border brut-shadow-lg p-8 space-y-6">
+                            <div class="border-b-2 border-black pb-4">
+                                <h3 class="font-display font-bold text-2xl uppercase">Technology</h3>
+                                <p class="font-mono text-xs mt-1">Web & Programming</p>
+                            </div>
+                            <ul class="space-y-3 font-medium">
+                                <li class="brut-border p-3 bg-gray-50 flex justify-between items-center">
+                                    <span>HTML & CSS</span>
+                                    <span class="font-mono text-xs">Intermediate</span>
+                                </li>
+                                <li class="brut-border p-3 bg-gray-50 flex justify-between items-center">
+                                    <span>JavaScript Fundamentals</span>
+                                    <span class="font-mono text-xs">Active</span>
+                                </li>
+                                <li class="brut-border p-3 bg-gray-50 flex justify-between items-center">
+                                    <span>Python & CS</span>
+                                    <span class="font-mono text-xs">Ongoing</span>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="reveal-down bg-brutYellow brut-border brut-shadow-lg p-8 space-y-6">
+                            <div class="border-b-2 border-black pb-4">
+                                <h3 class="font-display font-bold text-2xl uppercase">Cybersecurity</h3>
+                                <p class="font-mono text-xs mt-1">Security & Research</p>
+                            </div>
+                            <ul class="space-y-3 font-medium">
+                                <li class="brut-border p-3 bg-gray-50 flex justify-between items-center">
+                                    <span>Cybersecurity Fundamentals</span>
+                                    <span class="font-mono text-xs">Studying</span>
+                                </li>
+                                <li class="brut-border p-3 bg-gray-50 flex justify-between items-center">
+                                    <span>Ethical Hacking Learning</span>
+                                    <span class="font-mono text-xs">Active</span>
+                                </li>
+                                <li class="brut-border p-3 bg-gray-50 flex justify-between items-center">
+                                    <span>Security Research Interests</span>
+                                    <span class="font-mono text-xs">Exploring</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="contact" class="bg-brutYellow py-28 brut-border border-l-0 border-r-0">
+                <div class="max-w-7xl mx-auto px-6 text-center space-y-8">
+                    <span class="font-mono text-xs uppercase tracking-widest font-bold bg-white brut-border px-3 py-1 inline-block">05 // Connect</span>
+                    <h2 class="font-display font-bold text-5xl sm:text-7xl lg:text-8xl uppercase tracking-tight">
+                        HAVE A PROJECT IN MIND?
+                    </h2>
+                    <p class="text-xl max-w-2xl mx-auto font-medium">
+                        Interested in working together, discussing a project, or connecting? Reach out.
+                    </p>
+                    <div class="flex flex-wrap justify-center gap-6 pt-6">
+                        <a href="mailto:work.justinacharya@gmail.com" class="bg-white brut-border brut-shadow brut-shadow-hover px-8 py-4 font-bold text-sm uppercase tracking-wider transition-all">
+                            Email: work.justinacharya@gmail.com 
+                        </a>
+                        <a href="https://www.linkedin.com/in/justin-acharya-a58120256/" target="_blank" rel="noopener noreferrer" class="bg-white brut-border brut-shadow brut-shadow-hover px-8 py-4 font-bold text-sm uppercase tracking-wider transition-all">
+                            LinkedIn 
+                        </a>
+                        <a href="https://www.instagram.com/lil_bahun/" target="_blank" rel="noopener noreferrer" class="bg-white brut-border brut-shadow brut-shadow-hover px-8 py-4 font-bold text-sm uppercase tracking-wider transition-all">
+                            Instagram 
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+
+
+        <!-- ==================== DEDICATED DESIGN GALLERY VIEW (/designs) ==================== -->
+        <div id="designs-view" class="view-section hidden">
+            
+            <div class="max-w-7xl mx-auto px-6 py-16">
+                <!-- Gallery Header -->
+                <div class="mb-12 flex flex-col md:flex-row justify-between items-start md:items-end gap-6">
+                    <div>
+                        <a href="#" onclick="switchView('home'); return false;" class="font-mono text-xs uppercase font-bold bg-brutYellow brut-border px-3 py-1 inline-block mb-4 hover:bg-black hover:text-white transition-colors">
+                            ← Back to Home
+                        </a>
+                        <h1 class="font-display font-bold text-5xl sm:text-7xl uppercase">THE DESIGN ARCHIVE.</h1>
+                        <p class="text-lg font-normal mt-2 max-w-xl">
+                            A collection of visual work, experiments, and creative projects.
+                        </p>
+                    </div>
+
+                    <!-- Search Input -->
+                    <div class="w-full md:w-80">
+                        <input type="text" id="gallery-search" placeholder="Search by title or tags..." oninput="filterGallery()" class="w-full brut-border px-4 py-3 bg-brutWhite font-mono text-sm focus:outline-none focus:bg-brutYellow/20 transition-colors">
+                    </div>
+                </div>
+
+                <!-- Category Filters -->
+                <div class="flex flex-wrap gap-3 mb-12 pb-6 border-b-2 border-black" id="category-filters">
+                    <button onclick="setCategory('All')" data-cat="All" class="filter-btn brut-border px-4 py-2 font-mono text-xs uppercase font-bold bg-brutYellow brut-shadow">All Designs</button>
+                    <button onclick="setCategory('Whitehouse Designs')" data-cat="Whitehouse Designs" class="filter-btn brut-border px-4 py-2 font-mono text-xs uppercase font-bold bg-white hover:bg-brutYellow transition-colors">Whitehouse Designs</button>
+                    <button onclick="setCategory('Dimagi Kura Designs')" data-cat="Dimagi Kura Designs" class="filter-btn brut-border px-4 py-2 font-mono text-xs uppercase font-bold bg-white hover:bg-brutYellow transition-colors">Dimagi Kura Designs</button>
+                    <button onclick="setCategory('NPL Designs')" data-cat="NPL Designs" class="filter-btn brut-border px-4 py-2 font-mono text-xs uppercase font-bold bg-white hover:bg-brutYellow transition-colors">NPL Designs</button>
+                    <button onclick="setCategory('Other / Random Designs')" data-cat="Other / Random Designs" class="filter-btn brut-border px-4 py-2 font-mono text-xs uppercase font-bold bg-white hover:bg-brutYellow transition-colors">Other / Random Designs</button>
+                </div>
+
+                <!-- Gallery Grid -->
+                <div id="gallery-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Populated dynamically via JavaScript -->
+                </div>
+
+                <!-- Empty State -->
+                <div id="empty-state" class="hidden text-center py-20 brut-border bg-brutYellow my-8">
+                    <h3 class="font-display font-bold text-2xl uppercase">No designs found matching your criteria.</h3>
+                    <p class="font-mono text-sm mt-2">Try clearing your search or selecting a different category.</p>
+                </div>
+            </div>
+
+        </div>
+
+    </main>
+
+    <div id="lightbox" class="fixed inset-0 z-50 bg-black/80 hidden flex items-center justify-center p-4">
+        <div class="bg-brutWhite brut-border brut-shadow-lg max-w-4xl w-full max-h-[90vh] flex flex-col relative">
+            <div class="p-4 border-b-2 border-black flex justify-between items-center bg-brutYellow">
+                <span id="lightbox-title" class="font-display font-bold uppercase text-lg">Project Title</span>
+                <button onclick="closeLightbox()" class="brut-border px-3 py-1 bg-white font-mono text-xs font-bold uppercase hover:bg-black hover:text-white transition-colors">Close [ESC]</button>
+            </div>
+            <div class="p-6 overflow-y-auto flex flex-col items-center justify-center bg-gray-50">
+                <img id="lightbox-img" src="" alt="Design Preview" class="max-h-[60vh] object-contain brut-border mb-4">
+                <p id="lightbox-desc" class="text-base text-center font-normal max-w-2xl mb-4"></p>
+                <div id="lightbox-tags" class="flex flex-wrap gap-2 justify-center"></div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="brut-border border-l-0 border-r-0 border-b-0 py-12 bg-brutWhite">
+        <div class="max-w-7xl mx-auto px-6 flex flex-col sm:flex-row justify-between items-center gap-6">
+            <p class="font-mono text-xs uppercase font-bold">
+                © 2026 Justin Acharya. All rights reserved.
+            </p>
+            <a href="#home" onclick="switchView('home');" class="font-mono text-xs uppercase font-bold bg-brutYellow brut-border px-4 py-2 brut-shadow brut-shadow-hover">
+                Back to home ↑
+            </a>
+        </div>
+    </footer>
+    <div id="rightClickHint"> Hey there!</div>
+
+    <script>
+        // Centralized Project Data Structure
+        const designProjects = [
+            {
+                id: 1,
+                title: "Dimagi Kura Pokhara Teaser Graphic",
+                category: "Dimagi Kura Designs",
+                date: "2026",
+                tags: ["Branding", "Visual Identity", "Typography"],
+                description: "Bold teaser banner design for Dimagi Kura featuring vibrant lake photography, caution tape graphics, and stark heavy typography.",
+                image: "DKP insta.png"
+            },
+            {
+                id: 2,
+                title: "Mental Health Day Speaker Session Poster",
+                category: "Dimagi Kura Designs",
+                date: "2026",
+                tags: ["Event Design", "Posters", "Social Media"],
+                description: "Editorial event poster designed for World Mental Health Day featuring speaker Ms. Srijana Sherchan with clear typographic hierarchy and registration QR integration.",
+                image: "OCT 10 Poster.png"
+            },
+            {
+                id: 3,
+                title: "White House Dashain Fest Event Banner",
+                category: "Whitehouse Designs",
+                date: "2026",
+                tags: ["Festive", "Posters", "Event Design"],
+                description: "Festive promotional poster for Dashain Fest, combining cultural visual elements, event schedule details, and institutional branding.",
+                image: "Dashain Fest.png"
+            },
+            {
+                id: 4,
+                title: "White House +2 Admissions Open Campaign",
+                category: "Whitehouse Designs",
+                date: "2026",
+                tags: ["Admissions", "Posters", "Social Media"],
+                description: "Clean and high-impact educational promotional poster featuring athlete photography, key entrance exam details, and quick QR registration.",
+                image: "Admission Open.png"
+            },
+            {
+                id: 5,
+                title: "Laufey Visual Typography & Artwork Concept",
+                category: "Other / Random Designs",
+                date: "2026",
+                tags: ["Typography", "Poster Design", "Music"],
+                description: "Minimalist artist feature poster utilizing stacked Kinetic-style repeated typography and music player overlay elements.",
+                image: "Laufey.png"
+            },
+            {
+                id: 6,
+                title: "Ambition Guru Entrance Prep Digital Ad",
+                category: "Other / Random Designs",
+                date: "2026",
+                tags: ["Social Media", "EdTech", "Marketing"],
+                description: "Modern promotional graphic for B.Sc. CSIT entrance preparation app featuring app preview mockup, subject tags, and feature list.",
+                image: "Ambition Guru.png"
+            },
+            {
+                id: 7,
+                title: "Janakpur Bolts Matchday Promo",
+                category: "NPL Designs",
+                date: "2026",
+                tags: ["Social Media", "Sports", "Marketing"],
+                description: "High-energy sports marketing graphic for Janakpur Bolts featuring team branding, match details, mascot celebration atop a pink team bus, and vibrant stadium atmosphere.",
+                image: "Janakpur Bolts.png",
+                audioUrl: "janakpur.mp3"
+            },
+            {
+                id: 8,
+                title: "The Final Showdown Poster",
+                category: "NPL Designs",
+                date: "2026",
+                tags: ["Social Media", "Sports", "Marketing"],
+                description: "High-stakes promotional poster for the Nepal Premier League (NPL) final match featuring the championship trophy, team branding, and mascot in a grand stadium setting.",
+                image: "The Final Show Down Poster.png",
+                audioUrl: "ohbaad.mp3"
+            },
+            {
+                id: 9,
+                title: "Pokhara Avengers Matchday Poster",
+                category: "NPL Designs",
+                date: "2026",
+                tags: ["Social Media", "Sports", "Marketing"],
+                description: "Dynamic matchday promotional poster for the Pokhara Avengers featuring flying team mascots in superhero gear overlooking a packed stadium under a starry sky.",
+                image: "Pokhara Avengers Poster.png",
+                audioUrl: "pokhara.mp3"
+            }
+        ];
+
+        // Only NPL Designs section has music by default
+        const categoryAudioMap = {
+            "NPL Designs": "theme.mp3",
+            "Whitehouse Designs": null,
+            "Dimagi Kura Designs": null,
+            "Other / Random Designs": null,
+            "All": null
+        };
+
+        // ==================== WEB AUDIO API MOBILE FADER ====================
+        let audioCtx = null;
+        let activeAudio = null;
+        let activeGainNode = null;
+        let currentAudioUrl = null;
+        let isAudioEnabled = true;
+
+        function getAudioContext() {
+            if (!audioCtx) {
+                const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+                if (AudioContextClass) {
+                    audioCtx = new AudioContextClass();
+                }
+            }
+            if (audioCtx && audioCtx.state === 'suspended') {
+                audioCtx.resume();
+            }
+            return audioCtx;
+        }
+
+        function stopSmoothTrack() {
+            if (!activeAudio || !activeGainNode || !audioCtx) {
+                if (activeAudio) {
+                    try { activeAudio.pause(); } catch(e){}
+                    activeAudio = null;
+                }
+                currentAudioUrl = null;
+                return;
+            }
+
+            const oldAudio = activeAudio;
+            const oldGain = activeGainNode;
+            activeAudio = null;
+            activeGainNode = null;
+            currentAudioUrl = null;
+
+            const now = audioCtx.currentTime;
+            oldGain.gain.setValueAtTime(oldGain.gain.value, now);
+            oldGain.gain.linearRampToValueAtTime(0.001, now + 1.0);
+
+            setTimeout(() => {
+                try {
+                    oldAudio.pause();
+                    oldAudio.currentTime = 0;
+                } catch (e) {}
+            }, 1000);
+        }
+
+        function playSmoothTrack(url) {
+            if (!isAudioEnabled) return;
+
+            if (!url) {
+                stopSmoothTrack();
+                return;
+            }
+
+            if (currentAudioUrl === url && activeAudio && !activeAudio.paused) {
+                return;
+            }
+
+            const ctx = getAudioContext();
+
+            // Stop previous audio if running
+            stopSmoothTrack();
+
+            const newAudio = new Audio(url);
+            newAudio.loop = true;
+            newAudio.crossOrigin = "anonymous";
+
+            if (ctx) {
+                const gainNode = ctx.createGain();
+                const source = ctx.createMediaElementSource(newAudio);
+                source.connect(gainNode);
+                gainNode.connect(ctx.destination);
+
+                const now = ctx.currentTime;
+                gainNode.gain.setValueAtTime(0.001, now);
+                gainNode.gain.linearRampToValueAtTime(0.6, now + 1.2);
+
+                activeGainNode = gainNode;
+            } else {
+                newAudio.volume = 0.6;
+            }
+
+            activeAudio = newAudio;
+            currentAudioUrl = url;
+
+            newAudio.play().catch(err => {
+                console.log("Mobile audio autoplay blocked:", err);
+                activeAudio = null;
+                currentAudioUrl = null;
+            });
+        }
+
+        // Unlock Web Audio Context on first user tap/click on mobile
+        document.addEventListener('touchstart', function unlockAudio() {
+            getAudioContext();
+            document.removeEventListener('touchstart', unlockAudio);
+        }, { passive: true });
+        document.addEventListener('click', function unlockAudioClick() {
+            getAudioContext();
+            document.removeEventListener('click', unlockAudioClick);
+        });
+
+        let currentCategory = 'All';
+
+        // Custom Cursor Movement
+        const cursor = document.getElementById('custom-cursor');
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.left = `${e.clientX}px`;
+            cursor.style.top = `${e.clientY}px`;
+        });
+
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        function closeMobileMenu() {
+            mobileMenu.classList.add('hidden');
+        }
+
+        // View Router
+        function switchView(viewName) {
+            const homeView = document.getElementById('home-view');
+            const designsView = document.getElementById('designs-view');
+            
+            if (viewName === 'designs') {
+                homeView.classList.add('hidden');
+                designsView.classList.remove('hidden');
+                window.scrollTo(0, 0);
+                renderGallery();
+            } else {
+                designsView.classList.add('hidden');
+                homeView.classList.remove('hidden');
+                window.scrollTo(0, 0);
+                stopSmoothTrack();
+            }
+        }
+
+        // Render Carousel on Landing Page
+        function renderCarousel() {
+            const track = document.getElementById('carousel-track');
+            if (!track) return;
+            track.innerHTML = '';
+            
+            const displayItems = [...designProjects, ...designProjects];
+
+            displayItems.forEach((proj, idx) => {
+                const card = document.createElement('div');
+                card.className = "carousel-card min-w-[320px] sm:min-w-[380px] bg-white brut-border brut-shadow p-6 flex flex-col justify-between flex-shrink-0 cursor-pointer group";
+                card.setAttribute('tabindex', '0');
+                card.onclick = () => openLightbox(proj);
+                card.innerHTML = `
+                    <div class="aspect-video bg-gray-100 brut-border mb-4 overflow-hidden relative">
+                        <img src="${proj.image}" alt="${proj.title}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                    </div>
+                    <div>
+                        <span class="font-mono text-xs uppercase font-bold bg-brutYellow brut-border px-2 py-0.5 inline-block mb-2">${proj.category}</span>
+                        <h3 class="font-display font-bold text-xl uppercase group-hover:underline">${proj.title}</h3>
+                        <p class="text-xs font-mono text-gray-600 mt-1">${proj.date}</p>
+                    </div>
+                `;
+                track.appendChild(card);
+            });
+
+            setupCursorInteractions();
+            initAutoScrollCarousel();
+        }
+
+        // Setup Cursor Interactions for interactive elements and design cards
+        function setupCursorInteractions() {
+            document.querySelectorAll('a, button, input, textarea, .interactive, .carousel-card, #gallery-grid > div').forEach(el => {
+                el.removeEventListener('mouseenter', expandCursor);
+                el.removeEventListener('mouseleave', shrinkCursor);
+                
+                el.addEventListener('mouseenter', expandCursor);
+                el.addEventListener('mouseleave', shrinkCursor);
+            });
+        }
+
+        function expandCursor() {
+            cursor.classList.add('expand');
+        }
+
+        function shrinkCursor() {
+            cursor.classList.remove('expand');
+        }
+
+        // Auto-Scroll Carousel Engine
+        let autoScrollAnimationFrame = null;
+        let isUserInteracting = false;
+        let autoScrollSpeed = 0.65;
+        const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+        let carouselListenersAttached = false;
+
+        function initAutoScrollCarousel() {
+            const carouselTrack = document.getElementById('carousel-track');
+            if (!carouselTrack) return;
+
+            if (autoScrollAnimationFrame !== null) {
+                cancelAnimationFrame(autoScrollAnimationFrame);
+                autoScrollAnimationFrame = null;
+            }
+
+            if (prefersReducedMotion.matches) {
+                return;
+            }
+
+            const step = () => {
+                const halfWidth = carouselTrack.scrollWidth / 2;
+                if (!isUserInteracting && carouselTrack.scrollWidth > carouselTrack.clientWidth && halfWidth > 0) {
+                    carouselTrack.scrollLeft += autoScrollSpeed;
+                    if (carouselTrack.scrollLeft >= halfWidth) {
+                        carouselTrack.scrollLeft -= halfWidth;
+                    }
+                }
+                autoScrollAnimationFrame = requestAnimationFrame(step);
+            };
+
+            autoScrollAnimationFrame = requestAnimationFrame(step);
+
+            if (!carouselListenersAttached) {
+                carouselTrack.addEventListener('mouseenter', () => { isUserInteracting = true; });
+                carouselTrack.addEventListener('mouseleave', () => {
+                    if (!isDown) isUserInteracting = false;
+                });
+                carouselTrack.addEventListener('touchstart', () => { isUserInteracting = true; }, { passive: true });
+                carouselTrack.addEventListener('touchend', () => {
+                    window.setTimeout(() => { if (!isDown) isUserInteracting = false; }, 1200);
+                }, { passive: true });
+                carouselTrack.addEventListener('focusin', () => { isUserInteracting = true; });
+                carouselTrack.addEventListener('focusout', () => { isUserInteracting = false; });
+                carouselListenersAttached = true;
+            }
+        }
+
+        // Horizontal Carousel Manual Controls
+        function scrollCarousel(direction) {
+            const track = document.getElementById('carousel-track');
+            if (!track) return;
+            isUserInteracting = true;
+            track.scrollBy({ left: direction * 400, behavior: 'smooth' });
+            setTimeout(() => { isUserInteracting = false; }, 3000);
+        }
+
+        // Drag to scroll carousel functionality
+        const track = document.getElementById('carousel-track');
+        let isDown = false;
+        let startX;
+        let scrollLeft;
+
+        if (track) {
+            track.addEventListener('mousedown', (e) => {
+                isDown = true;
+                isUserInteracting = true;
+                startX = e.pageX - track.offsetLeft;
+                scrollLeft = track.scrollLeft;
+            });
+            track.addEventListener('mouseleave', () => { 
+                isDown = false; 
+                isUserInteracting = false;
+            });
+            track.addEventListener('mouseup', () => { 
+                isDown = false; 
+                setTimeout(() => { isUserInteracting = false; }, 1500);
+            });
+            track.addEventListener('mousemove', (e) => {
+                if (!isDown) return;
+                e.preventDefault();
+                const x = e.pageX - track.offsetLeft;
+                const walk = (x - startX) * 2;
+                track.scrollLeft = scrollLeft - walk;
+            });
+        }
+
+        // Render Full Gallery
+        function renderGallery() {
+            const grid = document.getElementById('gallery-grid');
+            const searchInput = document.getElementById('gallery-search');
+            const emptyState = document.getElementById('empty-state');
+            
+            if (!grid) return;
+            const searchQuery = searchInput ? searchInput.value.toLowerCase() : '';
+            
+            grid.innerHTML = '';
+
+            const filtered = designProjects.filter(proj => {
+                const matchesCategory = currentCategory === 'All' || proj.category === currentCategory;
+                const matchesSearch = proj.title.toLowerCase().includes(searchQuery) || 
+                                      proj.tags.some(t => t.toLowerCase().includes(searchQuery)) ||
+                                      proj.description.toLowerCase().includes(searchQuery);
+                return matchesCategory && matchesSearch;
+            });
+
+            if (filtered.length === 0) {
+                emptyState.classList.remove('hidden');
+                return;
+            } else {
+                emptyState.classList.add('hidden');
+            }
+
+            filtered.forEach(proj => {
+                const card = document.createElement('div');
+                card.className = "bg-white brut-border brut-shadow p-6 flex flex-col justify-between group cursor-pointer hover:bg-brutYellow/5 transition-colors";
+                card.onclick = () => openLightbox(proj);
+                card.innerHTML = `
+                    <div>
+                        <div class="aspect-video bg-gray-100 brut-border mb-4 overflow-hidden">
+                            <img src="${proj.image}" alt="${proj.title}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                        </div>
+                        <span class="font-mono text-xs uppercase font-bold bg-brutYellow brut-border px-2 py-0.5 inline-block mb-2">${proj.category}</span>
+                        <h3 class="font-display font-bold text-2xl uppercase mb-2 group-hover:underline">${proj.title}</h3>
+                        <p class="text-sm font-normal text-gray-700 mb-4">${proj.description}</p>
+                    </div>
+                    <div class="border-t-2 border-black pt-4 flex flex-wrap gap-2 items-center justify-between">
+                        <div class="flex flex-wrap gap-1">
+                            ${proj.tags.map(t => `<span class="text-xs font-mono bg-gray-100 brut-border px-2 py-0.5">${t}</span>`).join('')}
+                        </div>
+                        <span class="font-mono text-xs font-bold">View ↗</span>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+
+            setupCursorInteractions();
+        }
+
+        // Category Filter handler with smooth audio transition
+        function setCategory(cat) {
+            currentCategory = cat;
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                if (btn.getAttribute('data-cat') === cat) {
+                    btn.classList.add('bg-brutYellow', 'brut-shadow');
+                    btn.classList.remove('bg-white');
+                } else {
+                    btn.classList.remove('bg-brutYellow', 'brut-shadow');
+                    btn.classList.add('bg-white');
+                }
+            });
+            renderGallery();
+
+            // Trigger smooth song transition or stop based on category map
+            const trackUrl = categoryAudioMap[cat];
+            playSmoothTrack(trackUrl);
+        }
+
+        function filterGallery() {
+            renderGallery();
+        }
+
+        // Lightbox Functions with Design-Specific Song Trigger
+        function openLightbox(proj) {
+            document.getElementById('lightbox-title').innerText = proj.title;
+            document.getElementById('lightbox-img').src = proj.image;
+            document.getElementById('lightbox-desc').innerText = proj.description;
+            
+            const tagsContainer = document.getElementById('lightbox-tags');
+            tagsContainer.innerHTML = proj.tags.map(t => `<span class="text-xs font-mono bg-brutYellow brut-border px-3 py-1 font-bold">${t}</span>`).join('');
+            
+            document.getElementById('lightbox').classList.remove('hidden');
+
+            // Trigger specific sound if the project has an audioUrl defined
+            if (proj.audioUrl) {
+                playSmoothTrack(proj.audioUrl);
+            }
+        }
+
+        function closeLightbox() {
+            document.getElementById('lightbox').classList.add('hidden');
+            // Smoothly fade back into the active category audio or fade out
+            const activeCat = currentCategory || 'All';
+            const catTrack = categoryAudioMap[activeCat];
+
+            if (catTrack) {
+                playSmoothTrack(catTrack);
+            } else {
+                stopSmoothTrack();
+            }
+        }
+
+        // Keyboard navigation (Escape key closes lightbox)
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                closeLightbox();
+            }
+        });
+
+        // Reveal cards as their sections enter the viewport.
+        function initDownwardReveals() {
+            const revealItems = document.querySelectorAll('.reveal-down');
+            if (!('IntersectionObserver' in window)) {
+                revealItems.forEach(item => item.classList.add('is-visible'));
+                return;
+            }
+            const observer = new IntersectionObserver((entries, currentObserver) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        currentObserver.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.12, rootMargin: '0px 0px -30px 0px' });
+            revealItems.forEach((item, index) => {
+                item.style.transitionDelay = `${(index % 3) * 100}ms`;
+                observer.observe(item);
+            });
+        }
+
+        // Initialize on window load
+        window.onload = function() {
+            renderCarousel();
+            initDownwardReveals();
+            setupCursorInteractions();
+        };
+
+        const hint = document.getElementById("rightClickHint");
+        let hideTimeout;
+
+        document.addEventListener("contextmenu", (e) => {
+            e.preventDefault();
+
+            // Position relative to viewport
+            hint.style.left = `${e.clientX + 18}px`;
+            hint.style.top = `${e.clientY - 10}px`;
+
+            hint.classList.add("show");
+
+            clearTimeout(hideTimeout);
+            hideTimeout = setTimeout(() => {
+                hint.classList.remove("show");
+            }, 2500);
+        });
+
+        // Follow cursor movement while visible
+        document.addEventListener("mousemove", (e) => {
+            if (hint.classList.contains("show")) {
+                hint.style.left = `${e.clientX + 18}px`;
+                hint.style.top = `${e.clientY - 10}px`;
+            }
+        });
+    </script>
+    <script src="https://unpkg.com/lenis@1.3.4/dist/lenis.min.js"></script>
+
+    <script>
+      const lenis = new Lenis({
+        duration: 1.2,
+        smoothWheel: true,
+        wheelMultiplier: 1
+      });
+
+      function raf(time) {
+        lenis.raf(time);
+        requestAnimationFrame(raf);
+      }
+
+      requestAnimationFrame(raf);
+    </script>
+</body>
+</html>
